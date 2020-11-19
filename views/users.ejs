@@ -1,0 +1,56 @@
+<%- include("_header") -%>
+<div class="container">
+  <h1>List of Users (<%= model.length %>)</h1>
+  <h2>Search</h2>
+  <form action="/users" method="GET">
+    <table class="table">
+      <tr>
+        <td>
+          <input
+            type="text"
+            name="filter"
+            class="form-control"
+            placeholder="Search..."
+            value="<%= filter ? filter : '' %>"
+          />
+        </td>
+        <td>
+          <button type="submit" class="btn btn-info">Search</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <div class="table-responsive-sm">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Bio</th>
+          <th class="d-print-none">
+            <a class="btn btn-sm btn-success" href="/create">Add</a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (const user of model) { %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= user.bio %></td>
+          <td class="d-print-none">
+            <a class="btn btn-sm btn-warning" href="/edit/<%= user.id %>"
+              >Edit</a
+            >
+            <a class="btn btn-sm btn-danger" href="/delete/<%= user.id %>"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include("_footer") -%>
