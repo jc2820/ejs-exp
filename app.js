@@ -26,6 +26,6 @@ app.use(function (req, res, next) {
   res.status(404).render("error", { err: res.statusCode });
 });
 
-app.listen(2820, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("server running on 2820");
 });
