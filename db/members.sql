@@ -1,8 +1,6 @@
 DROP DATABASE IF EXISTS members;
 CREATE DATABASE members;
 
-\c members;
-
 CREATE TABLE users (
     ID SERIAL PRIMARY KEY,
     username VARCHAR,
